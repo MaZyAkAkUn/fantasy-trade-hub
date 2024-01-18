@@ -1,0 +1,6 @@
+1. [DONE] Make basic gui layout:
+- Simulation
+- Market Overview
+- Market`s members
+- *Supply Chains
+2. Make basic simulation logic for market; Maybe select one of the methods, like fixed start peices or order book, need to think here.
