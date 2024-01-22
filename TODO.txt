@@ -4,3 +4,7 @@
 - Market`s members
 - *Supply Chains
 2. Make basic simulation logic for market; Maybe select one of the methods, like fixed start peices or order book, need to think here.
+- bid/ask prices
+someone want to buy item, and want to pay some money, how much depends on cost which has this item for tham,
+3. Add market participants
+4. Add characteristics for market participants, like needs, and production.
