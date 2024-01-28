@@ -8,3 +8,23 @@
 someone want to buy item, and want to pay some money, how much depends on cost which has this item for tham,
 3. Add market participants
 4. Add characteristics for market participants, like needs, and production.
+I`m think we need to start with participiants needs, cos its basic stuff which form a item value for current participiant, so if we will have needs we can
+emulate asks of partipiciants for current item.
+Like if Citizen have high need of defence, he probably pay more for Iron Sword. And when he bought it, we can decrese defence need, so next time Citizen will not buy this sword again
+Hmm,Also we need to add a wallet for each member and emulate process of buy/sell, by decresing/increasing amount of money they have.
+But also we need to make source of money for each paticipiant, how they can make money?
+If it artisians, they can make money buy selling results of their work, if it Citizens? they can receive salaries. hm, but we still need roles for citizens, places for work?
+100 kg
+-1
+-3-10
+-5
+-6
+-...
+SO Farmer Bid for sell a for ex 100 kg of wheat, some Citizens, come and buy some wheat for ex 3,6,7kg, so Farmel doesnt receive all amount money for wheat, it comes by parts.
+We can setup basic value of needs for each member, like for each people we need around 300g of wheat per day, so the will not buy a 100kg for one person.
+We asume that members are close to rationality, but also add a some randomness to its needs.
+So from what we can start?
+Lets create MM class, which will handle needs of eack market`s participiants
+1. Make logic to form expected prices ranges for each markets member, use for it needs value and money amount
+2. Make needs generator code, for filling needs for each member, we can use seed value for determenition.
+3. Add randmomness to money amount, or maybe some ligic based on profession`s prestige and hardness

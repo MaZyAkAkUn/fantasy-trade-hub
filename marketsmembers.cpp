@@ -3,6 +3,26 @@
 MarketsMembers::MarketsMembers(QWidget *parent)
     : QWidget{parent}
 {
+//    mMembers;
+    MMember* tmpMember = new MMember(this, "Joe Board", "Miner", true, 7);
+    mMembers.append(tmpMember);
+    tmpMember = new MMember(this, "Piter Oake", "Woodcutter", true, 9);
+    mMembers.append(tmpMember);
+    tmpMember = new MMember(this, "Rid Furnace", "Smelter", true, 13);
+    mMembers.append(tmpMember);
+    tmpMember = new MMember(this, "Smelly Iron", "Blacksmith", true, 19);
+    mMembers.append(tmpMember);
+    tmpMember = new MMember(this, "Cow Man", "Farmer", true, 8);
+    mMembers.append(tmpMember);
+    tmpMember = new MMember(this, "Linen Cottonsky", "Tailor", true, 12);
+    mMembers.append(tmpMember);
+    tmpMember = new MMember(this, "Wood Bricker", "Carpenter", true, 16);
+    mMembers.append(tmpMember);
+
+    for (int i = 0; i<10;i++){
+        tmpMember = new MMember(this, "Citizen #" + QString::number(i), "Citizen", false, 6);
+        mMembers.append(tmpMember);
+    }
     setupUI();
 }
 
@@ -14,36 +34,34 @@ void MarketsMembers::setupUI()
 
 
     ly_main->addWidget(tbw_mMembers);
-    tbw_mMembers->setColumnCount(2);
+    tbw_mMembers->setColumnCount(3);
     tbw_mMembers->setRowCount(17);
-    tbw_mMembers->setHorizontalHeaderLabels({"Name", "Profession"}); //add here a diferent set of characteristics
-    tbw_mMembers->setItem(0, 0, new QTableWidgetItem("Joe Board"));
-    tbw_mMembers->setItem(0, 1, new QTableWidgetItem("Miner"));
-
-    tbw_mMembers->setItem(1, 0, new QTableWidgetItem("Piter Oake"));
-    tbw_mMembers->setItem(1, 1, new QTableWidgetItem("Woodcutter"));
-
-    tbw_mMembers->setItem(2, 0, new QTableWidgetItem("Rid Furnace"));
-    tbw_mMembers->setItem(2, 1, new QTableWidgetItem("Smelter"));
-
-    tbw_mMembers->setItem(3, 0, new QTableWidgetItem("Smelly Iron"));
-    tbw_mMembers->setItem(3, 1, new QTableWidgetItem("Blacksmith"));
-
-    tbw_mMembers->setItem(4, 0, new QTableWidgetItem("Cow Man"));
-    tbw_mMembers->setItem(4, 1, new QTableWidgetItem("Farmer"));
-
-    tbw_mMembers->setItem(5, 0, new QTableWidgetItem("Linen Cottonsky"));
-    tbw_mMembers->setItem(5, 1, new QTableWidgetItem("Tailor"));
-
-    tbw_mMembers->setItem(6, 0, new QTableWidgetItem("Wood Bricker"));
-    tbw_mMembers->setItem(6, 1, new QTableWidgetItem("Carpenter"));
-    int startFrom = 7;
-    for (int i = 0; i<10;i++){
-        tbw_mMembers->setItem(startFrom+ i, 0, new QTableWidgetItem("Citizen #" + QString::number(i)));
-        tbw_mMembers->setItem(startFrom+ i, 1, new QTableWidgetItem("Citizen"));
+    tbw_mMembers->setHorizontalHeaderLabels({"Name", "Profession", "Money Amount"}); //add here a diferent set of characteristics
+    int i = 0;
+    for(auto const& marketMember: mMembers){
+        tbw_mMembers->setItem(i, 0, new QTableWidgetItem(marketMember->name));
+        tbw_mMembers->setItem(i, 1, new QTableWidgetItem(marketMember->profession));
+        tbw_mMembers->setItem(i, 2, new QTableWidgetItem(QString::number(marketMember->getBalance())));
+        //TODO: add advenced view with detailed needs showed
+        i++;
     }
 
-
     ly_main->addWidget(tbw_mMembers);
+
+}
+
+MMember::MMember(QObject *parent): QObject{parent}
+{
+
+}
+
+MMember::MMember(QObject *parent, QString name, QString prof): QObject{parent}, name{name}, profession{prof}
+{
+
+}
+
+MMember::MMember(QObject *parent, QString name, QString prof, bool artisian, double money):
+    QObject{parent}, name{name}, profession{prof}, artisian{artisian}, money{money}
+{
 
 }
